@@ -22,9 +22,9 @@
     <label for="exampleInputEmail1" class="form-label">Ваш парикмахер</label>
      <select name="barber" class="form-control">
       <option selected>Выберете из списка</option>
-      <option>Иван</option>
-      <option value="2 (Наталья)">Наталья</option>
-      <option>Джек руки-ножницы</option>
+      <option <%= @barber == 'Иван' ? 'selected' : ''%>>Иван</option>
+      <option <%= @barber == 'Наталья' ? 'selected' : ''%>>Наталья</option>
+      <option <%= @barber == 'Джек руки-ножницы' ? 'selected' : ''%>>Джек руки-ножницы</option>
     </select>
     </div>
 
