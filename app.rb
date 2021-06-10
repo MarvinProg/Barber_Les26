@@ -3,6 +3,11 @@ require 'sinatra'
 require 'sinatra/reloader'
 require "sqlite3"
 
+
+def get_db
+  return SQLite3::Database.new 'barbershop.db'
+end
+
 configure do
   db = get_db
   db.execute 'CREATE TABLE IF NOT EXISTS 
@@ -25,7 +30,6 @@ get '/visit' do
   erb :visit
 end
 
-#Error?
 post '/visit' do
   @username = params[:username]
   @phone = params[:phone]
@@ -44,7 +48,7 @@ post '/visit' do
     return erb :visit
   end
 
-  @db.execute 'insert inter 
+  db.execute 'insert inter 
     Users 
     (
       username, 
@@ -54,12 +58,11 @@ post '/visit' do
       color
     )
     values (?,?,?,?,?)', [@username, @phone, @datetime, @barber, @color]
+  db.close
   erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}" 
 end
 
-def get_db
-  return SQLite3::Database.new 'barbershop.db'
-end
+
 
 
 configure do

@@ -15,7 +15,7 @@
 
  	<div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Когда вас ждать?</label>
-    <input name="datetime" type="text" class="form-control" placeholder="Введите дату и время" value="<%=@datetime%>">
+    <input id= "datetimepicker" name="datetime" type="text" class="form-control" placeholder="Введите дату и время" value="<%=@datetime%>">
 	</div>
 
     <div class="mb-3">
@@ -54,6 +54,7 @@
 <script type="text/javascript"> 
     $(function() {
         $('#color').simplecolorpicker(); //Инициализация самого плагина
+        $('#datetimepicker').datetimepicker();
     })
 </script>
 
