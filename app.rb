@@ -68,7 +68,7 @@ end
 
 
 get '/showusers' do  
-  erb "hellow word"
+  erb :showusers
 end
 
 configure do
