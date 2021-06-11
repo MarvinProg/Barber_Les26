@@ -33,6 +33,7 @@ get '/visit' do
 end
 
 post '/visit' do
+  
   @username = params[:username]
   @phone = params[:phone]
   @datetime = params[:datetime]
@@ -68,6 +69,10 @@ end
 
 
 get '/showusers' do  
+  db = get_db
+
+  @results = db.execute 'select * from Users order by id desc'
+
   erb :showusers
 end
 
@@ -76,7 +81,7 @@ configure do
 end
 
 helpers do
-  def username
+  def username1
     session[:identity] ? session[:identity] : 'Hello stranger'
   end
 end
@@ -98,7 +103,7 @@ get '/login/form' do
 end
 
 post '/login/attempt' do
-  session[:identity] = params['username']
+  session[:identity] = params['username1']
   where_user_came_from = session[:previous_url] || '/'
   redirect to where_user_came_from
 end
