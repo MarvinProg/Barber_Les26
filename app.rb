@@ -95,7 +95,7 @@ post '/visit' do
     values (?,?,?,?,?)', [@username, @phone, @datetime, @barber, @color]
   
 
-  erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}" 
+  erb "<h2>Спасибо, вы записались! </h2>" 
 end
 
 
@@ -105,6 +105,10 @@ get '/showusers' do
   @results = db.execute 'select * from Users order by id desc'
 
   erb :showusers
+end
+
+get '/contacts' do
+  erb :contacts
 end
 
 configure do
