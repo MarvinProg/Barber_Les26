@@ -24,27 +24,34 @@ def get_db
   return db
 end
 
+before  do
+  db = get_db
+  @barbers = db.execute 'select * from Barbers'
+  
+end
+
+
 configure do
   db = get_db
-  db.execute 'CREATE TABLE IF NOT EXISTS 
-    "Users" 
+  db.execute "CREATE TABLE IF NOT EXISTS 
+    'Users' 
     (
-      "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-      "username" TEXT,
-      "phone" TEXT,
-      "datestamp" TEXT,
-      "barber" TEXT,
-      "color" TEXT
-    )'
+      'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+      'username' TEXT,
+      'phone' TEXT,
+      'datestamp' TEXT,
+      'barber' TEXT,
+      'color' TEXT
+    )"
 
-  db.execute 'CREATE TABLE IF NOT EXISTS 
-    "Barbers" 
+  db.execute "CREATE TABLE IF NOT EXISTS 
+    'Barbers' 
     (
-      "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-      "name" TEXT,
-    )'
+      'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+      'name' TEXT
+    )"
 
-    seed_db db, [Иван, Наталья, Джек руки-ножницы, другой]
+    seed_db db, ["Иван", "Наталья", "Джек руки-ножницы", "другой"]
 
 end
 
